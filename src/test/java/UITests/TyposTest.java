@@ -9,6 +9,11 @@ import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
+/**
+ * 5. Typos - Проверить соответствие параграфа орфографии
+ * Локатор: By.tagName(“p”)
+ */
+
 public class TyposTest {
 
     private final String actualText = "Sometimes you'll see a typo, other times you won't.";
