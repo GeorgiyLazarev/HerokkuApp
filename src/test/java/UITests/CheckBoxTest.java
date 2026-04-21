@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.util.List;
@@ -29,6 +30,7 @@ public class CheckBoxTest {
         options.addArguments("--disable-notification");
 
     WebDriver driver = new ChromeDriver(options);
+    SoftAssert softAssert = new SoftAssert();
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
@@ -37,15 +39,16 @@ public class CheckBoxTest {
         List<WebElement> checkboxes = driver.findElements(By.cssSelector("[type=checkbox]"));
 
         boolean isCheck = checkboxes.get(0).isSelected();
-        assertFalse(isCheck);
+        softAssert.assertFalse(isCheck);
         checkboxes.get(0).click();
-        assertTrue(checkboxes.get(0).isSelected());
+        softAssert.assertTrue(checkboxes.get(0).isSelected());
 
         boolean isCheck2 = checkboxes.get(1).isSelected();
-        assertTrue(isCheck2);
+        softAssert.assertTrue(isCheck2);
         checkboxes.get(1).click();
-        assertFalse(checkboxes.get(1).isSelected());
+        softAssert.assertFalse(checkboxes.get(1).isSelected());
 
         driver.quit();
+        softAssert.assertAll();
     }
 }
