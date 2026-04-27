@@ -17,19 +17,10 @@ import java.time.Duration;
  * Локатор: By.tagName(“input”)
  */
 
-public class InputsTest {
+public class InputsTest extends BaseTest {
 
     @Test
     public void inputsTest() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        options.addArguments("--incognito");
-        options.addArguments("--disable-notification");
-
-        WebDriver driver = new ChromeDriver(options);
-        SoftAssert softAssert = new SoftAssert();
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         driver.get("https://the-internet.herokuapp.com/inputs");
 
@@ -52,7 +43,6 @@ public class InputsTest {
         int afterDown = Integer.parseInt(driver.findElement(By.tagName("input")).getAttribute("value"));
         softAssert.assertEquals(afterDown, beforeDown - 1, "Число не убавилось");
 
-        driver.quit();
         softAssert.assertAll();
     }
 }

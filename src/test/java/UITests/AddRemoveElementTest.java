@@ -17,19 +17,10 @@ import java.time.Duration;
  * b. By.xpath("//button[text()='Delete']")
  */
 
-public class AddRemoveElementTest {
+public class AddRemoveElementTest extends BaseTest {
 
     @Test
     public void checkAddRemoveElement() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        options.addArguments("--incognito");
-        options.addArguments("--disable-notification");
-
-        WebDriver driver = new ChromeDriver(options);
-        SoftAssert softAssert = new SoftAssert();
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
 

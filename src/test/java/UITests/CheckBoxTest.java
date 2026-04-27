@@ -20,19 +20,10 @@ import static org.testng.AssertJUnit.assertTrue;
  * checked, сделать unheck, проверить, что он unchecked
  */
 
-public class CheckBoxTest {
+public class CheckBoxTest extends BaseTest {
 
     @Test
     public void verifyCheckBox() {
-    ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        options.addArguments("--incognito");
-        options.addArguments("--disable-notification");
-
-    WebDriver driver = new ChromeDriver(options);
-    SoftAssert softAssert = new SoftAssert();
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         driver.get("https://the-internet.herokuapp.com/checkboxes");
 
@@ -48,7 +39,6 @@ public class CheckBoxTest {
         checkboxes.get(1).click();
         softAssert.assertFalse(checkboxes.get(1).isSelected());
 
-        driver.quit();
         softAssert.assertAll();
     }
 }
